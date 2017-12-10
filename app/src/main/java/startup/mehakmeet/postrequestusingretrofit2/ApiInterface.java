@@ -1,6 +1,11 @@
 package startup.mehakmeet.postrequestusingretrofit2;
 
+import com.google.gson.JsonObject;
+
+import org.json.JSONObject;
+
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
@@ -11,9 +16,6 @@ import retrofit2.http.POST;
 
 public interface ApiInterface {
 
-    @FormUrlEncoded
-    @POST("/tvchannels/")
-    Call<pojo_chan> savePost(
-            @Field("key") String key
-    );
+    @POST("something/")
+    Call<JsonObject> savePost(@Body JsonObject jsonObject);
 }

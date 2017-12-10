@@ -4,6 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -19,16 +22,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mAPIService = ApiUtils.getAPIService();
-        sendPost(key);
+        sendPost();
     }
 
-    public void sendPost(String key) {
-        mAPIService.savePost(key).enqueue(new Callback<pojo_chan>() {
-            @Override
-            public void onResponse(Call<pojo_chan> call, Response<pojo_chan> response) {
+    public void sendPost() {
+        JsonObject jsonObject=new JsonObject();
+        jsonObject.addProperty("key","ABCDEFG");
 
+        Log.d("tagg","URL: "+mAPIService.savePost(jsonObject).request().url().toString());
+        mAPIService.savePost(jsonObject).enqueue(new Callback<JsonObject>() {
+            @Override
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                //Log.i("tagg",call.request().url().toString());
                 if(response.isSuccessful()) {
-                    Log.i("RESPONSE",response.body().toString());
+                    Log.i("RESPONSE", String.valueOf(response.body().toString()));
                 }
 
                 else
@@ -38,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<pojo_chan> call, Throwable t) {
+            public void onFailure(Call<JsonObject> call, Throwable t) {
 
 
                 Log.i("RESPONSE","OnFailure...Failed");

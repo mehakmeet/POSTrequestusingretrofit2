@@ -7,7 +7,7 @@ public class ApiUtils {
 
     private ApiUtils() {}
 
-    public static final String BASE_URL = "http://pgolecha.me:8383/";
+    public static final String BASE_URL = "http://something.abc/";
 
     public static ApiInterface getAPIService() {
 
