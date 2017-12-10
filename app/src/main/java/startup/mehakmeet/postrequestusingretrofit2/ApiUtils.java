@@ -5,7 +5,7 @@ package startup.mehakmeet.postrequestusingretrofit2;
  */
 public class ApiUtils {
 
-    private ApiUtils() {}
+    private ApiUtils(){}
 
     public static final String BASE_URL = "http://something.abc/";
 

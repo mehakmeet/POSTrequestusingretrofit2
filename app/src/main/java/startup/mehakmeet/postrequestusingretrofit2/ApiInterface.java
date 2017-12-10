@@ -15,7 +15,6 @@ import retrofit2.http.POST;
  */
 
 public interface ApiInterface {
-
     @POST("something/")
     Call<JsonObject> savePost(@Body JsonObject jsonObject);
 }

@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     public void sendPost() {
         JsonObject jsonObject=new JsonObject();
         jsonObject.addProperty("key","ABCDEFG");
-
         Log.d("tagg","URL: "+mAPIService.savePost(jsonObject).request().url().toString());
         mAPIService.savePost(jsonObject).enqueue(new Callback<JsonObject>() {
             @Override
